@@ -1,34 +1,26 @@
 require "rails_helper"
 
-RSpec.describe ProductsController, :type => :routing do
+RSpec.describe Api::V1::ProductsController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/products").to route_to("products#index")
-    end
-
-    it "routes to #new" do
-      expect(:get => "/products/new").to route_to("products#new")
+      expect(get: "api/products").to route_to("api/v1/products#index", format: :json)
     end
 
     it "routes to #show" do
-      expect(:get => "/products/1").to route_to("products#show", :id => "1")
-    end
-
-    it "routes to #edit" do
-      expect(:get => "/products/1/edit").to route_to("products#edit", :id => "1")
+      expect(get: "api/products/1").to route_to("api/v1/products#show", id: "1", format: :json)
     end
 
     it "routes to #create" do
-      expect(:post => "/products").to route_to("products#create")
+      expect(post: "api/products").to route_to("api/v1/products#create", format: :json)
     end
 
     it "routes to #update" do
-      expect(:put => "/products/1").to route_to("products#update", :id => "1")
+      expect(put: "api/products/1").to route_to("api/v1/products#update", id: "1", format: :json)
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/products/1").to route_to("products#destroy", :id => "1")
+      expect(delete: "api/products/1").to route_to("api/v1/products#destroy", id: "1", format: :json)
     end
 
   end
