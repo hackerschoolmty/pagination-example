@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :product do
     description { FFaker::DizzleIpsum.sentence }
-    price       { rand(1.0...30.0) }
+    price       { rand(1.0...30.0).round(2) }
   end
 
   factory :fruit, parent: :product do
