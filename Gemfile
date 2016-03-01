@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "2.2.3"
 
 gem "versionist"
-gem "active_model_serializers", git: "git@github.com:rails-api/active_model_serializers.git", branch: 'master'
+gem "active_model_serializers"
 
 
 gem "rails", "4.2.1"
@@ -14,6 +14,8 @@ gem "sass-rails", "~> 5.0"
 gem "coffee-rails", "~> 4.1.0"
 gem "uglifier", ">= 1.3.0"
 gem "puma"
+
+gem 'kaminari'
 
 group :development do
   gem "spring"
@@ -26,7 +28,7 @@ group :development, :test do
   gem "awesome_print"
   gem "factory_girl_rails"
   gem "pry-rails"
-  gem "rspec-rails", "~> 3.1.0"
+  gem "rspec-rails", "~> 3.2.2"
   gem "ffaker"
 end
 

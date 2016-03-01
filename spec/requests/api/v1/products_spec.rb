@@ -33,7 +33,7 @@ RSpec.describe "Products", :type => :request do
       # parse the json response
       json = JSON.parse(response.body)
       # check the right amount of products are returned
-      expect(json.length).to eq(10)
+      expect(json['products'].length).to eq(10)
     end
   end
 
@@ -55,7 +55,7 @@ RSpec.describe "Products", :type => :request do
       # parse the json response
       json = JSON.parse(response.body)
       # check if the response name of the product is the same
-      expect(json['name']).to eq(product.name)
+      expect(json['product']['name']).to eq(product.name)
     end
   end
 

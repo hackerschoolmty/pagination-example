@@ -1,10 +1,10 @@
-class Api::V1::ProductsController < ApplicationController
+class Api::V1::ProductsController < Api::V1::BaseController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
   def index
-    @products = Product.all
-    render json: @products
+    @products = Product.page(params[:page]).per(10)
+    render json: @products, meta: json_pagination(@products)
   end
 
   # GET /products/1
