@@ -17,8 +17,7 @@ RSpec.describe "Products", :type => :request do
     it 'Works!' do
 
       get api_products_path, nil, auth_header
-      # or
-      # get '/api/products'
+      # or get '/api/products'
 
       # test for the 200 status-code
       expect(response).to have_http_status(200)
@@ -35,6 +34,21 @@ RSpec.describe "Products", :type => :request do
       # check the right amount of products are returned
       expect(json['products'].length).to eq(10)
     end
+
+    it 'Expects to be paginated' do
+      FactoryGirl.create_list(:vegetable, 50)
+
+      get api_products_path, nil, auth_header
+      # parse the json response
+      json = JSON.parse(response.body)
+
+      # Remember that we set 10 records per page
+      expect(json['meta']['total_pages']).to eq(5)
+      expect(json['meta']['current_page']).to eq(1)
+      expect(json['meta']['total_pages']).to eq(5)
+      expect(json['meta']['total_count']).to eq(50)
+    end
+
   end
 
   describe "GET /products/:id" do
